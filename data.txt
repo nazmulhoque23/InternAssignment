@@ -1,0 +1,6 @@
+1,Nokia C30,Nokia C30 smart phone,Mobile,Nokia,2500.0,29,InStock
+2,Nokia C30,Nokia C30 smart phone,Mobile,Nokia,2500.0,27,InStock
+3,Samsung Galaxy,Samsung s22 smart phone,Mobile,Samsung,3000.0,28,Upcoming
+4,Table,Folding Table,Furniture,Otobi,4000.0,30,Upcoming
+5,Suzuki Gixxer,Sports bike,Bike,Suzuki,10000.0,17,Upcoming
+6,Mercedes s217,Mercedes S217 car,Car,Mercedes,17000.0,25,Upcoming
