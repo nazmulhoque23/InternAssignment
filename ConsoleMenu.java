@@ -28,9 +28,10 @@ public class ConsoleMenu{
         };
         Scanner sc = new Scanner(System.in);
         int option = 0;
+        printMenu(options);
 
         while(option != 8 && option < 8){
-            printMenu(options);
+            
 
             try{
                 option = sc.nextInt();

@@ -85,11 +85,12 @@ public class ReadFromFile{
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter which category your want to select: ");
-        String category = sc.next().toLowerCase();
-        List<String> filteredCategory = products.stream().filter(p->p.getCategory().equals(category)).map(p->p.getCategory()).collect(Collectors.toList());
-        for(String s: filteredCategory){
-            System.out.println();
-            System.out.println(s);
+        String category = sc.next();
+        for(Product p: products){
+            if(p.getCategory().equals(category)){
+                System.out.println("Name: "+ p.getName());
+                
+            }
         }
     }
 
@@ -99,12 +100,15 @@ public class ReadFromFile{
         List<Product> products = readFromFileData();
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter which brand your want to select: ");
-        String brand = sc.next().toLowerCase();
-        List<String> filterByBrand = products.stream().filter(p->p.getBrand().equals(brand)).map(p->p.getBrand()).collect(Collectors.toList());
-        for(String s: filterByBrand){
-            System.out.println();
-            System.out.println(s);
+        String brand = sc.next();
+        for(Product p: products){
+            if(p.getBrand().equals(brand)){
+                System.out.println("Name: "+ p.getName()+ " "+ "Brand: "+ p.getBrand());
+                
+            }
         }
+
+        
     }
 
     //filtering by availability
@@ -113,11 +117,13 @@ public class ReadFromFile{
         List<Product> products = readFromFileData();
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter to see availability: ");
-        String avail = sc.next().toLowerCase();
+        String category = sc.next();
 
-        List<Product.Available> filteredByAvail = products.stream().filter(p->p.getAvail().equals(avail)).map(p->p.getAvail()).collect(Collectors.toList());
-        for(Product.Available s: filteredByAvail){
-            System.out.println(s);
+        for(Product p: products){
+            if(p.getCategory().equals(category)){
+                System.out.println("Name: "+ p.getName()+ " "+ "Availability: "+ p.getAvail());
+                
+            }
         }
     }
 
