@@ -82,9 +82,13 @@ public class ReadFromFile{
     public static void filterByCategory() throws IOException, IllegalAccessError{
         
         List<Product> products = readFromFileData();
+        Scanner sc = new Scanner(System.in);
 
-        List<String> filteredCategory = products.stream().map(p->p.getCategory()).collect(Collectors.toList());
+        System.out.println("Enter which category your want to select: ");
+        String category = sc.next().toLowerCase();
+        List<String> filteredCategory = products.stream().filter(p->p.getCategory().equals(category)).map(p->p.getCategory()).collect(Collectors.toList());
         for(String s: filteredCategory){
+            System.out.println();
             System.out.println(s);
         }
     }
@@ -93,9 +97,12 @@ public class ReadFromFile{
     public static void filterByBrand() throws IOException, IllegalAccessError{
         
         List<Product> products = readFromFileData();
-
-        List<String> filterByBrand = products.stream().map(p->p.getBrand()).collect(Collectors.toList());
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter which brand your want to select: ");
+        String brand = sc.next().toLowerCase();
+        List<String> filterByBrand = products.stream().filter(p->p.getBrand().equals(brand)).map(p->p.getBrand()).collect(Collectors.toList());
         for(String s: filterByBrand){
+            System.out.println();
             System.out.println(s);
         }
     }
@@ -104,8 +111,11 @@ public class ReadFromFile{
     public static void filterByAvailable() throws IOException, IllegalAccessError{
         
         List<Product> products = readFromFileData();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter to see availability: ");
+        String avail = sc.next().toLowerCase();
 
-        List<Product.Available> filteredByAvail = products.stream().map(p->p.getAvail()).collect(Collectors.toList());
+        List<Product.Available> filteredByAvail = products.stream().filter(p->p.getAvail().equals(avail)).map(p->p.getAvail()).collect(Collectors.toList());
         for(Product.Available s: filteredByAvail){
             System.out.println(s);
         }
@@ -116,10 +126,22 @@ public class ReadFromFile{
         
         List<Product> products = readFromFileData();
 
-        List<Double> filteredPrice = products.stream().map(p->p.getPrice()).collect(Collectors.toList());
-        for(Double s: filteredPrice){
-            System.out.println(s);
+        List<Product> pr = new ArrayList<Product>();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter lower range: ");
+        int input1 = sc.nextInt();
+        System.out.println("Enter upper range: ");
+        int input2 = sc.nextInt();
+
+        for(Product p: products){
+            if(p.getPrice()>= input1 && p.getPrice()<=input2){
+                System.out.println("Name: "+ p.getName()+ " "+ "Price: "+ p.getPrice());
+                
+            }
         }
+
+        
     }
 
     //Sorting by name
@@ -213,7 +235,7 @@ public class ReadFromFile{
         
         readData();
         
-        FileWriter writer = new FileWriter("PurchaseLog.txt");
+        FileWriter writer = new FileWriter("PurchaseLog.txt", true);
         
         System.out.println("Place Id and amount to buy"+"\n"+ "Put the 2nd value in a new line");
         
@@ -252,6 +274,7 @@ public class ReadFromFile{
                     //System.out.println(modifiedAmount);
                     modifyFile("data.txt", String.valueOf(amount),String.valueOf(modifiedAmount));
                     writer.write("Purchase Time: "+ time+ ", "+ "id: "+ id+ ", "+"item name: "+name+", "+"quantity: "+ quantity+", "+"Price: "+price);
+                    writer.append('\n');
                     
                     writer.close();
                     
