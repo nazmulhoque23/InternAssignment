@@ -86,12 +86,16 @@ public class ReadFromFile{
 
         System.out.println("Enter which category your want to select: ");
         String category = sc.next();
-        for(Product p: products){
+        
+        
+        products.stream().filter(p->p.getCategory().equals(category)).forEach(p->System.out.println("Name: "+p.getName()));
+        
+        /*for(Product p: products){
             if(p.getCategory().equals(category)){
                 System.out.println("Name: "+ p.getName());
                 
             }
-        }
+        }*/
     }
 
     //filtering by brand
@@ -101,12 +105,7 @@ public class ReadFromFile{
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter which brand your want to select: ");
         String brand = sc.next();
-        for(Product p: products){
-            if(p.getBrand().equals(brand)){
-                System.out.println("Name: "+ p.getName()+ " "+ "Brand: "+ p.getBrand());
-                
-            }
-        }
+        products.stream().filter(p->p.getBrand().equals(brand)).forEach(p->System.out.println("Name: "+p.getName()+" "+"Brand: "+p.getBrand()));
 
         
     }
@@ -119,12 +118,8 @@ public class ReadFromFile{
         System.out.println("Enter to see availability: ");
         String category = sc.next();
 
-        for(Product p: products){
-            if(p.getCategory().equals(category)){
-                System.out.println("Name: "+ p.getName()+ " "+ "Availability: "+ p.getAvail());
-                
-            }
-        }
+        
+        products.stream().filter(p->p.getCategory().equals(category)).forEach(p->System.out.println("Name: "+p.getName()+" "+"Availability: "+p.getAvail()));
     }
 
     //Filtering by price
